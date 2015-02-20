@@ -1,0 +1,62 @@
+<ion-view view-title="Events">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="event in events" type="item-text-wrap" href="#/tab/events/{{event.id}}">
+        <h2>title - {{event.title}}</h2>
+        <p>address - {{event.address}}</p>
+        <p>date - {{event.date}}</p>
+        <p>time - {{event.time}}</p>
+
+        <h2>{{event.name}}</h2>
+        <p>{{event.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="deleteButton(event._id)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+
+
+<!-- <div ng-controller="eventIndexCtrl">
+    <div class="page-header">
+        <h1><ng-pluralize count="events.length"
+            when="{'1': '1 Event', 'other': '{} Events'}">
+        </ng-pluralize></h1>
+        <div class="row">
+            <div class="col-xs-6">
+            </div>
+            <div class="col-xs-6">
+                <input ng-model="written" type="text" placeholder="search" class='form-control'>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="text-left">
+                <button class="btn btn-default" ng-click = "predicate='title'"><i class="fa fa-arrow-up"></i> Title </button>
+                <button class="btn btn-default" ng-click = "predicate='-title'"><i class="fa fa-arrow-down"></i> Title </button>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="text-right">
+                <a class="btn btn-default" ng-href="#/events/new"><i class="fa fa-plus"></i> New Event </a>
+            </div>
+        </div>
+    </div>
+
+    <ul ng-repeat="event in events | orderBy:predicate:reverse | filter:written" class="list-unstyled well-lg">
+        <li>title - {{event.title}}</li>
+        <li>address - {{event.address}}</li>
+        <li>date - {{event.date}}</li>
+        <li>time - {{event.time}}</li>
+        <li class="text-right">
+            <a class="btn btn-default" ng-href="#/events/{{event._id}}"> Details </a>
+            <a class="btn btn-warning" ng-href="#/events/{{event._id}}/edit"><i class="fa fa-pencil"></i> Edit </a>
+            <a class="btn btn-danger" ng-click="deleteButton(event._id)"> Delete </a>
+        </li>
+    </ul>
+</div>
+ -->

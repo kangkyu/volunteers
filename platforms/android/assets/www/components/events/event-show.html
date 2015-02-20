@@ -1,0 +1,42 @@
+<ion-view view-title="{{event.title}}">
+  <ion-content class="padding">
+
+    <h3>Address</h3>
+    <p>{{event.address}}</p>
+    <h3>Date</h3>
+    <p>{{event.date}}</p>
+    <h3>Time</h3>
+    <p>{{event.time}}</p>
+    
+  </ion-content>
+</ion-view>
+
+<!-- 
+<div ng-controller="eventShowCtrl">
+    <div class="page-header">
+        <h1>{{event.title}}</h1>
+    </div>
+
+    <h3>Address</h3>
+    <p>{{event.address}}</p>
+    <h3>Date</h3>
+    <p>{{event.date}}</p>
+    <h3>Time</h3>
+    <p>{{event.time}}</p>
+
+    <div ng-controller="userIndexCtrl">
+        <h3>Volunteers</h3>
+        <ul ng-repeat="user in users | orderBy:'_id' | filter:{userEvent: event}" class="list-unstyled">
+            <li><a ng-href="#/users/{{user._id}}">{{user.firstName}} {{user.lastName}}</a></li>
+            <li>{{user.email}}</li>
+            <li>{{user.eventId}}</li>
+        </ul>
+    </div>
+
+    <div class="text-right">
+        <a class="btn btn-default" ng-href="#/events"> All Events </a>
+        <a class="btn btn-warning" ng-href="#/events/{{event._id}}/edit"><i class="fa fa-pencil"></i> Edit </a>
+        <a class="btn btn-danger" ng-click="deleteButton(event._id)" ng-href="#/events"> Delete </a>
+    </div>
+
+</div> -->
