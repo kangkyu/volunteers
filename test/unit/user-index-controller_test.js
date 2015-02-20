@@ -1,6 +1,7 @@
 'use strict';
 
 describe('userIndexCtrl', function(){
+    var baseUrl = 'http://localhost:3000/api/users';
 
     var mockUsers = [
         {
@@ -54,7 +55,7 @@ describe('userIndexCtrl', function(){
     });
 
     it('should have an array of all users', function(){
-        $httpBackend.expectGET('/api/users').respond(mockUsers);
+        $httpBackend.expectGET(baseUrl).respond(mockUsers);
         $httpBackend.flush();        
         expect($scope.users).toEqual(mockUsers);
     });
@@ -89,9 +90,9 @@ describe('userIndexCtrl', function(){
 
     describe("deleteUser", function(){
         it('should delete a user when id matching', function(){
-            $httpBackend.expectGET('/api/users').respond(mockUsers);
-            $httpBackend.expectDELETE('/api/users/'+ idDeleting).respond(remainingUsers);
-            $httpBackend.expectGET('/api/users').respond(remainingUsers);
+            $httpBackend.expectGET(baseUrl).respond(mockUsers);
+            $httpBackend.expectDELETE(baseUrl + '/'+ idDeleting).respond(remainingUsers);
+            $httpBackend.expectGET(baseUrl).respond(remainingUsers);
             $scope.deleteUser(idDeleting);
             $httpBackend.flush();
             expect($scope.users).toEqual(remainingUsers);

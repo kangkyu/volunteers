@@ -1,23 +1,7 @@
 <ion-view view-title="{{user.firstName}}">
     <ion-content class="padding">
-        <p>first name - {{user.firstName}}</p>
-        <p>last name - {{user.lastName}}</p>
+        <img ng-src="{{user.face}}" style="width: 64px; height: 64px">
+        <h3>{{user.firstName}} {{user.lastName}}</h3>
         <p>email - {{user.email}}</p>
     </ion-content>
 </ion-view>
-
-<!-- <div ng-controller="userShowCtrl">
-    <div class="page-header">
-        <h1>{{user.firstName}} {{user.lastName}}</h1>
-    </div>
-    <ul class="list-unstyled well-lg">
-        <li>first name - {{user.firstName}}</li>
-        <li>last name - {{user.lastName}}</li>
-        <li>email - {{user.email}}</li>
-        <li ng-if="user.userEvent">event - <a href="#/events/{{user.userEvent._id}}">{{user.userEvent.title}}</a></li>
-        <li class="text-right">
-            <a class="btn btn-info" ng-href="#/users/{{user._id}}/edit"><i class="fa fa-pencil"></i> Edit </a>
-            <a class="btn btn-danger" ng-click=""> Delete </a>
-        </li>
-    </ul>
-</div> -->

@@ -1,9 +1,9 @@
 angular
 .module('userEditCtrlModule',[])
-.controller('userEditCtrl', ['$scope', '$routeParams', 'userService',
-function($scope, $routeParams, userService){
+.controller('userEditCtrl', ['$scope', '$stateParams', 'userService',
+function($scope, $stateParams, userService){
 
-    userService.loadById($routeParams.userId).success(function(data){
+    userService.loadById($stateParams.userId).success(function(data){
         $scope.user = data;
     });
 

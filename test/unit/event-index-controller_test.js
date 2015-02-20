@@ -1,6 +1,7 @@
 'use strict';
 
 describe('eventIndexCtrl', function(){
+    var baseUrl = 'http://localhost:3000/api/events';
 
     var mockEvents = [
         {
@@ -83,7 +84,7 @@ describe('eventIndexCtrl', function(){
 
     it("should have all events under scope", function(){
         // mock data
-        $httpBackend.expectGET('/api/events').respond(mockEvents);
+        $httpBackend.expectGET(baseUrl).respond(mockEvents);
         $httpBackend.flush();
 
         // actual function call
@@ -94,9 +95,9 @@ describe('eventIndexCtrl', function(){
 
     it("should be able to delete an event by its delete button", function(){
         // mock data
-        $httpBackend.expectGET('/api/events').respond(mockEvents);
-        $httpBackend.expectDELETE('/api/events/' + eventIdDelete).respond(eventsAfterDelete);
-        $httpBackend.expectGET('/api/events').respond(eventsAfterDelete);
+        $httpBackend.expectGET(baseUrl).respond(mockEvents);
+        $httpBackend.expectDELETE(baseUrl + '/' + eventIdDelete).respond(eventsAfterDelete);
+        $httpBackend.expectGET(baseUrl).respond(eventsAfterDelete);
 
         // actual function call
         $scope.deleteButton(eventIdDelete);

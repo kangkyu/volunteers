@@ -1,9 +1,10 @@
 angular
 .module('userShowCtrlModule',[])
-.controller('userShowCtrl', ['$scope','$routeParams','userService','eventService',
-function($scope,$routeParams,userService,eventService){
+.controller('userShowCtrl', ['$scope','$stateParams','userService',
+function($scope,$stateParams,userService){
 
-    userService.loadById($routeParams.userId).success(function(data){
+    userService.loadById($stateParams.userId).success(function(data){
         $scope.user = data;
+        console.log($stateParams.userId);
     });
 }]);

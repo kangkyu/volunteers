@@ -1,6 +1,7 @@
 'use strict';
 
 describe('eventService', function(){
+    var baseUrl = 'http://localhost:3000/api/events';
 
     var mockEvents = [
         {
@@ -177,7 +178,7 @@ describe('eventService', function(){
 
     describe('loadAll', function(){
         it("should get all events", function(){
-            $httpBackend.expectGET('/api/events').respond(mockEvents);
+            $httpBackend.expectGET(baseUrl).respond(mockEvents);
 
             var resultEvents;
             eventService.loadAll().success(function(data){
@@ -191,7 +192,7 @@ describe('eventService', function(){
 
     describe('loadById', function(){
         it("should get an event with matching id", function(){
-            $httpBackend.expectGET('/api/events/' + idPicked).respond(eventPicked);
+            $httpBackend.expectGET(baseUrl + '/' + idPicked).respond(eventPicked);
 
             var resultEvent;
             eventService.loadById(idPicked).success(function(data){
@@ -203,7 +204,7 @@ describe('eventService', function(){
         });
 
         it("should get empty object when id doesn't match to any event", function(){
-            $httpBackend.expectGET('/api/events/' + "nomatch").respond({});
+            $httpBackend.expectGET(baseUrl + '/' + "nomatch").respond({});
 
             var resultEvent;
             eventService.loadById("nomatch").success(function(data){
@@ -217,8 +218,8 @@ describe('eventService', function(){
 
     describe('addEvent', function(){
         it("should add an event to the event list", function(){
-            $httpBackend.expectPOST('/api/events', newEvent).respond(newEventAdded);
-            $httpBackend.expectGET('/api/events').respond(addedEvents);
+            $httpBackend.expectPOST(baseUrl, newEvent).respond(newEventAdded);
+            $httpBackend.expectGET(baseUrl).respond(addedEvents);
 
             eventService.addEvent(newEvent);
 
@@ -231,7 +232,7 @@ describe('eventService', function(){
         });
 
         it("should return the added event", function(){
-            $httpBackend.expectPOST('/api/events', newEvent).respond(newEventAdded);
+            $httpBackend.expectPOST(baseUrl, newEvent).respond(newEventAdded);
             var resultEvent;
             eventService.addEvent(newEvent).success(function(data){
                 resultEvent = data;
@@ -243,9 +244,9 @@ describe('eventService', function(){
 
     describe('deleteEvent', function(){
         it("should delete a matching event with the id given", function(){
-            $httpBackend.expectDELETE('/api/events/' + idToDelete).respond(eventDeleted);
+            $httpBackend.expectDELETE(baseUrl + '/' + idToDelete).respond(eventDeleted);
             eventService.deleteEvent(idToDelete)
-            $httpBackend.expectGET("/api/events").respond(deletedEvents);
+            $httpBackend.expectGET(baseUrl).respond(deletedEvents);
             var resultEvents;
             eventService.loadAll().success(function(data){
                 resultEvents = data;
@@ -255,7 +256,7 @@ describe('eventService', function(){
         });
 
         it("should return the deleted event", function(){
-            $httpBackend.expectDELETE('/api/events/' + idToDelete).respond(eventDeleted);
+            $httpBackend.expectDELETE(baseUrl + '/' + idToDelete).respond(eventDeleted);
             var resultEvent;
             eventService.deleteEvent(idToDelete).success(function(data){
                 resultEvent = data;
@@ -265,7 +266,7 @@ describe('eventService', function(){
         });
 
         it("should get empty object when id doesn't match to any event", function(){
-            $httpBackend.expectDELETE('/api/events/' + "nomatch").respond({});
+            $httpBackend.expectDELETE(baseUrl + '/' + "nomatch").respond({});
             var resultEvent;
             eventService.deleteEvent("nomatch").success(function(data){
                 resultEvent = data;
@@ -277,8 +278,8 @@ describe('eventService', function(){
 
     describe('updateEvent', function(){
         it("should update the event with id into edited input", function(){
-            $httpBackend.expectPUT('/api/events/' + idEdited, eventEdited).respond(eventEdited);
-            $httpBackend.expectGET('/api/events').respond(updatedEvents);
+            $httpBackend.expectPUT(baseUrl + '/' + idEdited, eventEdited).respond(eventEdited);
+            $httpBackend.expectGET(baseUrl).respond(updatedEvents);
             eventService.updateEvent(idEdited, eventEdited);
 
             var resultEvents;
@@ -290,7 +291,7 @@ describe('eventService', function(){
         });
 
         it("should return the updated event", function(){
-            $httpBackend.expectPUT('/api/events/' + idEdited, eventEdited).respond(eventEdited);
+            $httpBackend.expectPUT(baseUrl + '/' + idEdited, eventEdited).respond(eventEdited);
             var resultEvent;
             eventService.updateEvent(idEdited, eventEdited).success(function(data){
                 resultEvent = data;

@@ -1,6 +1,7 @@
 'use strict';
 
 describe('userEditCtrl', function(){
+    var baseUrl = 'http://localhost:3000/api/users';
 
     var mockUsers = [
         {
@@ -68,7 +69,7 @@ describe('userEditCtrl', function(){
         }
     ];
 
-    var userService, userEditCtrl, $scope, $rootScope, $controller, $httpBackend, $routeParams;
+    var userService, userEditCtrl, $scope, $rootScope, $controller, $httpBackend, $stateParams;
     beforeEach(function(){
         module('userEditCtrlModule');
         module('userServiceModule');
@@ -78,19 +79,19 @@ describe('userEditCtrl', function(){
             $controller = $injector.get('$controller');
             $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
-            $routeParams = {'userId': editUserId};
+            $stateParams = {'userId': editUserId};
             $httpBackend = $injector.get('$httpBackend');
         });
 
         userEditCtrl = $controller('userEditCtrl', {
             $scope: $scope,
             userService: userService,
-            $routeParams: $routeParams
+            $stateParams: $stateParams
         });
     });
 
     it('should show pre-filled form to edit', function(){
-        $httpBackend.expectGET('/api/users/'+ $routeParams.userId).respond(userEdit);
+        $httpBackend.expectGET(baseUrl + '/'+ $stateParams.userId).respond(userEdit);
         $httpBackend.flush();
 
         expect($scope.user).toEqual(userEdit);
@@ -98,8 +99,8 @@ describe('userEditCtrl', function(){
 
     describe('updateUser', function(){
         it("should update by submit of edited form", function(){
-            $httpBackend.expectGET('/api/users/'+ $routeParams.userId).respond(userEdit);
-            $httpBackend.expectPUT('/api/users/'+ $routeParams.userId, userEdited).respond(userEdited);
+            $httpBackend.expectGET(baseUrl + '/'+ $stateParams.userId).respond(userEdit);
+            $httpBackend.expectPUT(baseUrl + '/'+ $stateParams.userId, userEdited).respond(userEdited);
 
             $scope.updateUser(userEdited);
             $httpBackend.flush();

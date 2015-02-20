@@ -1,6 +1,7 @@
 'use strict';
 
 describe('userShowModule', function(){
+    var baseUrl = 'http://localhost:3000/api/users';
 
     var mockUserId = 4, userFound = {
          _id: '4',
@@ -11,7 +12,7 @@ describe('userShowModule', function(){
          userEvent: { _id: '3', title: 'Super Bowl', address: 'Phoenix, Arizona', date: 'Feb 1, 2015', time: '2am' }
     };
 
-    var $scope, $routeParams, userService, eventService, $rootScope, $controller, userShowCtrl, $httpBackend;
+    var $scope, $stateParams, userService, eventService, $rootScope, $controller, userShowCtrl, $httpBackend;
     beforeEach(function(){
         module("userShowCtrlModule");
         module("userServiceModule");
@@ -20,7 +21,7 @@ describe('userShowModule', function(){
         inject(function($injector){
             userService = $injector.get('userService');
             eventService = $injector.get('eventService');
-            $routeParams = { 'userId': mockUserId };
+            $stateParams = { 'userId': mockUserId };
             $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
             $controller = $injector.get('$controller');
@@ -31,12 +32,12 @@ describe('userShowModule', function(){
             $scope: $scope,
             userService: userService,
             eventService: eventService,
-            $routeParams: $routeParams
+            $stateParams: $stateParams
         });
     });
 
     it('should find a user by userId', function(){
-        $httpBackend.expectGET('/api/users/' + mockUserId).respond(userFound);
+        $httpBackend.expectGET(baseUrl +'/' + mockUserId).respond(userFound);
         $httpBackend.flush();
 
         expect($scope.user).toEqual(userFound);
