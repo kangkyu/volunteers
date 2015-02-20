@@ -1,0 +1,11 @@
+node_modules/
+bower_components/
+
+memo_example_folder/
+
+# WebStorm IDE generated files #
+################################
+.idea
+
+npm-debug.log
+.DS_Store
