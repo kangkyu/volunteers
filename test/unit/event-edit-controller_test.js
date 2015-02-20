@@ -65,7 +65,7 @@ describe('eventEditCtrl', function(){
         }
     ];
 
-    var eventService, eventEditCtrl, $scope, $rootScope, $controller, $httpBackend, $routeParams;
+    var eventService, eventEditCtrl, $scope, $rootScope, $controller, $httpBackend, $stateParams;
     beforeEach(function(){
         module('eventEditCtrlModule');
         module('eventServiceModule');
@@ -75,7 +75,7 @@ describe('eventEditCtrl', function(){
             $controller = $injector.get('$controller');
             $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
-            $routeParams = {'eventId': editId};
+            $stateParams = {'eventId': editId};
             $httpBackend = $injector.get('$httpBackend');
         });
 
@@ -83,7 +83,7 @@ describe('eventEditCtrl', function(){
             {
                 $scope: $scope,
                 eventService: eventService,
-                $routeParams: $routeParams
+                $stateParams: $stateParams
             }
         );
     });
@@ -94,7 +94,7 @@ describe('eventEditCtrl', function(){
     });
 
     it("should show pre-filled event attributes on edit form", function(){
-        $httpBackend.expectGET(baseUrl + '/' + $routeParams.eventId).respond(eventEdit);
+        $httpBackend.expectGET(baseUrl + '/' + $stateParams.eventId).respond(eventEdit);
         $httpBackend.flush();
 
         expect($scope.event).toEqual(eventEdit);
@@ -104,8 +104,8 @@ describe('eventEditCtrl', function(){
 
         it("should edit an event from the form", function(){
             // mock data
-            $httpBackend.expectGET(baseUrl + '/' + $routeParams.eventId).respond(eventEdit);
-            $httpBackend.whenPUT(baseUrl + '/'+ $routeParams.eventId, eventUpdated).respond(eventUpdated);
+            $httpBackend.expectGET(baseUrl + '/' + $stateParams.eventId).respond(eventEdit);
+            $httpBackend.whenPUT(baseUrl + '/'+ $stateParams.eventId, eventUpdated).respond(eventUpdated);
 
             // actual function call
             $scope.updateButton(eventUpdated);

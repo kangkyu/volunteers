@@ -37,3 +37,53 @@
 
   ]
 ]
+2015-02-20 13:13:35.731 volunteer-management-app_2nd[20575:122647] CDVPlugin class IonicKeyboard (pluginName: Keyboard) does not exist.
+2015-02-20 13:13:35.733 volunteer-management-app_2nd[20575:122647] ERROR: Plugin 'Keyboard' not found, or is not a CDVPlugin. Check your plugin mapping in config.xml.
+2015-02-20 13:13:35.734 volunteer-management-app_2nd[20575:122647] -[CDVCommandQueue executePending] [Line 158] FAILED pluginJSON = [
+  "INVALID",
+  "Keyboard",
+  "close",
+  [
+
+  ]
+]
+2015-02-20 13:13:38.638 volunteer-management-app_2nd[20575:122647] CDVPlugin class IonicKeyboard (pluginName: Keyboard) does not exist.
+2015-02-20 13:13:38.638 volunteer-management-app_2nd[20575:122647] ERROR: Plugin 'Keyboard' not found, or is not a CDVPlugin. Check your plugin mapping in config.xml.
+2015-02-20 13:13:38.638 volunteer-management-app_2nd[20575:122647] -[CDVCommandQueue executePending] [Line 158] FAILED pluginJSON = [
+  "INVALID",
+  "Keyboard",
+  "close",
+  [
+
+  ]
+]
+2015-02-20 13:13:39.148 volunteer-management-app_2nd[20575:122647] CDVPlugin class IonicKeyboard (pluginName: Keyboard) does not exist.
+2015-02-20 13:13:39.148 volunteer-management-app_2nd[20575:122647] ERROR: Plugin 'Keyboard' not found, or is not a CDVPlugin. Check your plugin mapping in config.xml.
+2015-02-20 13:13:39.151 volunteer-management-app_2nd[20575:122647] -[CDVCommandQueue executePending] [Line 158] FAILED pluginJSON = [
+  "INVALID",
+  "Keyboard",
+  "close",
+  [
+
+  ]
+]
+2015-02-20 13:13:39.862 volunteer-management-app_2nd[20575:122647] CDVPlugin class IonicKeyboard (pluginName: Keyboard) does not exist.
+2015-02-20 13:13:39.862 volunteer-management-app_2nd[20575:122647] ERROR: Plugin 'Keyboard' not found, or is not a CDVPlugin. Check your plugin mapping in config.xml.
+2015-02-20 13:13:39.863 volunteer-management-app_2nd[20575:122647] -[CDVCommandQueue executePending] [Line 158] FAILED pluginJSON = [
+  "INVALID",
+  "Keyboard",
+  "close",
+  [
+
+  ]
+]
+2015-02-20 13:13:41.081 volunteer-management-app_2nd[20575:122647] CDVPlugin class IonicKeyboard (pluginName: Keyboard) does not exist.
+2015-02-20 13:13:41.081 volunteer-management-app_2nd[20575:122647] ERROR: Plugin 'Keyboard' not found, or is not a CDVPlugin. Check your plugin mapping in config.xml.
+2015-02-20 13:13:41.081 volunteer-management-app_2nd[20575:122647] -[CDVCommandQueue executePending] [Line 158] FAILED pluginJSON = [
+  "INVALID",
+  "Keyboard",
+  "close",
+  [
+
+  ]
+]

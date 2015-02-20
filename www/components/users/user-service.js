@@ -3,26 +3,27 @@ angular
 .factory('userService', ['$http',
 function($http){
     var userService = {};
+    var baseUrl = 'http://localhost:3000/api/users';
 
     userService.loadAll = function(){
-        return $http.get('http://localhost:3000/api/users');
+        return $http.get(baseUrl);
     };
 
     userService.loadById = function(id){
-        return $http.get('http://localhost:3000/api/users' + '/' + id);
+        return $http.get(baseUrl + '/' + id);
     };
     
     userService.deleteUser = function(id){
-        return $http.delete('http://localhost:3000/api/users' + '/' + id);
+        return $http.delete(baseUrl + '/' + id);
     };
 
 
     userService.addUser = function(user){
-        return $http.post('http://localhost:3000/api/users', user);
+        return $http.post(baseUrl, user);
     };
 
     userService.updateUser = function(id, user){
-        return $http.put('http://localhost:3000/api/users' + '/' + id, user);
+        return $http.put(baseUrl + '/' + id, user);
     };
 
     return userService;

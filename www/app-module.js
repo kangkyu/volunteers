@@ -50,7 +50,6 @@ angular
     })
 
     // Each tab has its own nav history stack:
-
     .state('tab.dash', {
           url: '/dash',
           views: {
@@ -60,7 +59,6 @@ angular
               }
           }
     })
-
 
     .state('tab.users',{
         url: '/users',
@@ -100,15 +98,5 @@ angular
     });
 
     $urlRouterProvider.otherwise('/tab/dash');
-
-  // .state('tab.account', {
-  //   url: '/account',
-  //   views: {
-  //     'tab-account': {
-  //       templateUrl: 'templates/tab-account.html',
-  //       controller: 'AccountCtrl'
-  //     }
-  //   }
-  // })
 
 });

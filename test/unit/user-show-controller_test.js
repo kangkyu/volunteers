@@ -12,7 +12,7 @@ describe('userShowModule', function(){
          userEvent: { _id: '3', title: 'Super Bowl', address: 'Phoenix, Arizona', date: 'Feb 1, 2015', time: '2am' }
     };
 
-    var $scope, $routeParams, userService, eventService, $rootScope, $controller, userShowCtrl, $httpBackend;
+    var $scope, $stateParams, userService, eventService, $rootScope, $controller, userShowCtrl, $httpBackend;
     beforeEach(function(){
         module("userShowCtrlModule");
         module("userServiceModule");
@@ -21,7 +21,7 @@ describe('userShowModule', function(){
         inject(function($injector){
             userService = $injector.get('userService');
             eventService = $injector.get('eventService');
-            $routeParams = { 'userId': mockUserId };
+            $stateParams = { 'userId': mockUserId };
             $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
             $controller = $injector.get('$controller');
@@ -32,7 +32,7 @@ describe('userShowModule', function(){
             $scope: $scope,
             userService: userService,
             eventService: eventService,
-            $routeParams: $routeParams
+            $stateParams: $stateParams
         });
     });
 

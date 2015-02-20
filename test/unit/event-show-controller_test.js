@@ -66,7 +66,7 @@ describe('eventShowCtrlModule', function(){
         }
     ];
 
-    var $scope, $rootScope, $routeParams, $controller, eventShowCtrl, eventService, $httpBackend;
+    var $scope, $rootScope, $stateParams, $controller, eventShowCtrl, eventService, $httpBackend;
     beforeEach(function(){
         module("eventShowCtrlModule");
         module("eventServiceModule");
@@ -76,13 +76,13 @@ describe('eventShowCtrlModule', function(){
             $controller = $injector.get('$controller');
             $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
-            $routeParams = { 'eventId': mockEventId };
+            $stateParams = { 'eventId': mockEventId };
             $httpBackend = $injector.get('$httpBackend');
         });
 
         eventShowCtrl = $controller('eventShowCtrl', {
             $scope: $scope,
-            $routeParams: $routeParams,
+            $stateParams: $stateParams,
             eventService: eventService
         });
     });

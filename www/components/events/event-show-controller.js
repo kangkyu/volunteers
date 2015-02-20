@@ -1,9 +1,9 @@
 angular
 .module('eventShowCtrlModule', [])
-.controller('eventShowCtrl',['$scope', '$routeParams', 'eventService',
-function($scope, $routeParams, eventService){
+.controller('eventShowCtrl',['$scope', '$stateParams', 'eventService',
+function($scope, $stateParams, eventService){
 
-    eventService.loadById($routeParams.eventId).success(function(data){
+    eventService.loadById($stateParams.eventId).success(function(data){
         $scope.event = data;
     });
 

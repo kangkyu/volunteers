@@ -1,30 +1,17 @@
 <ion-view view-title="Users">
-  <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="user in users" type="item-text-wrap" href="#/tab/users/{{user.id}}">
-        <h2>{{user.firstName}}</h2>
-        <p>{{user.lastName}}</p>
-        <p>{{user.email}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+    <ion-content>
+        <ion-list>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="user in users" type="item-text-wrap" href="#/tab/users/{{user._id}}">
+                <img ng-src="{{user.face}}">
+                <h2>{{user.firstName}}</h2>
+                <p>{{user.lastName}}</p>
+                <p>{{user.email}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
 
-        <ion-option-button class="button-assertive" ng-click="deleteUser(user)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+                <ion-option-button class="button-assertive" ng-click="deleteUser(user)">
+                  Delete
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
 </ion-view>
-
-<!-- <div ng-controller="userIndexCtrl">
-
-   <ul ng-repeat="user in users | orderBy:'_id'" class="list-unstyled well-lg">
-        <li>first name - {{user.firstName}}</li>
-        <li>last name - {{user.lastName}}</li>
-        <li>email - {{user.email}}</li>
-        <li class="text-right">
-            <a class="btn btn-default" ng-href="#/users/{{user._id}}"> Details </a>
-            <a class="btn btn-info" ng-href="#/users/{{user._id}}/edit"><i class="fa fa-pencil"></i> Edit </a>
-            <a class="btn btn-danger" ng-click="deleteUser(user._id)"> Delete </a>
-        </li>
-    </ul>
-</div> -->
