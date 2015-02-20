@@ -2,6 +2,7 @@ angular
 .module('volunteerApp', 
 [
     'ionic',
+    'ngCordova',
 
     'userIndexCtrlModule',
     'userServiceModule',

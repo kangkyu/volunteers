@@ -1,6 +1,7 @@
 'use strict';
 
 describe('userShowModule', function(){
+    var baseUrl = 'http://localhost:3000/api/users';
 
     var mockUserId = 4, userFound = {
          _id: '4',
@@ -36,7 +37,7 @@ describe('userShowModule', function(){
     });
 
     it('should find a user by userId', function(){
-        $httpBackend.expectGET('/api/users/' + mockUserId).respond(userFound);
+        $httpBackend.expectGET(baseUrl +'/' + mockUserId).respond(userFound);
         $httpBackend.flush();
 
         expect($scope.user).toEqual(userFound);

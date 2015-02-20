@@ -1,6 +1,7 @@
 'use strict';
 
 describe('userService', function(){
+    var baseUrl = 'http://localhost:3000/api/users';
 
     var mockUsers = [
         {
@@ -46,7 +47,7 @@ describe('userService', function(){
 
     describe('loadAll', function(){
         it("should get all users", function(){
-            $httpBackend.expectGET('/api/users').respond(mockUsers);
+            $httpBackend.expectGET(baseUrl).respond(mockUsers);
 
             var resultUsers;
             userService.loadAll().success(function(data){
@@ -67,7 +68,7 @@ describe('userService', function(){
 
     describe('loadById', function(){
         it("should get user when id matches one", function(){
-            $httpBackend.expectGET('/api/users/' + idPicked).respond(userPicked);
+            $httpBackend.expectGET(baseUrl + '/' + idPicked).respond(userPicked);
 
             var resultUser;
             userService.loadById(idPicked).success(function(data){
@@ -79,7 +80,7 @@ describe('userService', function(){
         });
 
         it("should get empty object when id doesn't match", function(){
-            $httpBackend.expectGET('/api/users/' + "nomatch").respond({});
+            $httpBackend.expectGET(baseUrl + '/' + "nomatch").respond({});
 
             var resultUser;
             userService.loadById("nomatch").success(function(data){
@@ -131,8 +132,8 @@ describe('userService', function(){
 
     describe('addUser', function(){
         it('should add another user on the user list', function(){
-            $httpBackend.expectPOST('/api/users', userAdd).respond(userAdded);
-            $httpBackend.expectGET('/api/users').respond(usersAfterAdd);
+            $httpBackend.expectPOST(baseUrl, userAdd).respond(userAdded);
+            $httpBackend.expectGET(baseUrl).respond(usersAfterAdd);
 
             userService.addUser(userAdd);
 
@@ -146,7 +147,7 @@ describe('userService', function(){
         });
 
         it("should add id to the added user", function(){
-            $httpBackend.expectPOST('/api/users', userAdd).respond(userAdded);
+            $httpBackend.expectPOST(baseUrl, userAdd).respond(userAdded);
             var resultUser;
             userService.addUser(userAdd).success(function(data){
                 resultUser = data;
@@ -191,7 +192,7 @@ describe('userService', function(){
 
     describe('updateUser', function(){
         it("should update the user", function(){
-            $httpBackend.expectPUT('/api/users/' + editUserId, userEdited).respond(userEdited);
+            $httpBackend.expectPUT(baseUrl + '/' + editUserId, userEdited).respond(userEdited);
             var resultUser;
             userService.updateUser(editUserId, userEdited).success(function(data){
                 resultUser = data;
@@ -201,8 +202,8 @@ describe('userService', function(){
         });
 
         it("should update user list with the updated user", function(){
-            $httpBackend.expectPUT('/api/users/' + editUserId, userEdited).respond(userEdited);
-            $httpBackend.expectGET('/api/users').respond(usersAfterUpdate);
+            $httpBackend.expectPUT(baseUrl + '/' + editUserId, userEdited).respond(userEdited);
+            $httpBackend.expectGET(baseUrl).respond(usersAfterUpdate);
             userService.updateUser(editUserId, userEdited);
             var resultUsers;
             userService.loadAll().success(function(data){
@@ -241,7 +242,7 @@ describe('userService', function(){
 
     describe('deleteUser', function(){
         it('should delete a user if id matching', function(){
-            $httpBackend.expectDELETE('/api/users/' + idDeleting).respond(deletedUser);
+            $httpBackend.expectDELETE(baseUrl + '/' + idDeleting).respond(deletedUser);
             var resultUser;
             userService.deleteUser(idDeleting).success(function(data){
                 resultUser = data;
@@ -250,9 +251,9 @@ describe('userService', function(){
             expect(resultUser).toEqual(deletedUser);
         });
         it('should be removed from user list if id matching', function(){
-            $httpBackend.expectDELETE('/api/users/' + idDeleting).respond(deletedUser);
+            $httpBackend.expectDELETE(baseUrl + '/' + idDeleting).respond(deletedUser);
             userService.deleteUser(idDeleting);
-            $httpBackend.expectGET('/api/users').respond(remainingUsers);
+            $httpBackend.expectGET(baseUrl).respond(remainingUsers);
             var resultUsers;
             userService.loadAll().success(function(data){
                 resultUsers = data;
@@ -262,7 +263,7 @@ describe('userService', function(){
         });
 
         it('should return empty object if nothing matches', function(){
-            $httpBackend.expectDELETE('/api/users/'+ 'nomatch').respond({});
+            $httpBackend.expectDELETE(baseUrl +'/'+ 'nomatch').respond({});
             var result;
             userService.deleteUser('nomatch').success(function(data){
                 result = data;
@@ -271,9 +272,9 @@ describe('userService', function(){
             expect(result).toEqual({});
         });
         it('should not make any changes on user list if nothing matches', function(){
-            $httpBackend.expectDELETE('/api/users/' + "nomatch").respond({});
+            $httpBackend.expectDELETE(baseUrl +'/' + "nomatch").respond({});
             userService.deleteUser("nomatch");
-            $httpBackend.expectGET('/api/users').respond(mockUsers);
+            $httpBackend.expectGET(baseUrl).respond(mockUsers);
             var resultUsers;
             userService.loadAll().success(function(data){
                 resultUsers = data;

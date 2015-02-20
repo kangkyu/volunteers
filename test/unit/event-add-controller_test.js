@@ -1,6 +1,8 @@
 'use strict';
 
 describe('eventAddCtrl', function(){
+    var baseUrl = 'http://localhost:3000/api/events';
+    
     var eventToAdd = {
         title: "Moon Festival",
         address: "Chinatown, Los Angeles, California",
@@ -85,7 +87,7 @@ describe('eventAddCtrl', function(){
 
     it("should add an event from the form input", function(){
         // mock data
-        $httpBackend.expectPOST('/api/events', eventToAdd).respond(eventAdded);
+        $httpBackend.expectPOST(baseUrl, eventToAdd).respond(eventAdded);
 
         // actual function call
         $scope.addButton(eventToAdd);

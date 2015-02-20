@@ -1,6 +1,8 @@
 'use strict';
 
 describe('eventEditCtrl', function(){
+    var baseUrl = 'http://localhost:3000/api/events';
+    
     var editId = 3, eventEdit = {
         _id: 3,
         title: "Moon Festival",
@@ -92,7 +94,7 @@ describe('eventEditCtrl', function(){
     });
 
     it("should show pre-filled event attributes on edit form", function(){
-        $httpBackend.expectGET('/api/events/' + $routeParams.eventId).respond(eventEdit);
+        $httpBackend.expectGET(baseUrl + '/' + $routeParams.eventId).respond(eventEdit);
         $httpBackend.flush();
 
         expect($scope.event).toEqual(eventEdit);
@@ -102,8 +104,8 @@ describe('eventEditCtrl', function(){
 
         it("should edit an event from the form", function(){
             // mock data
-            $httpBackend.expectGET('/api/events/' + $routeParams.eventId).respond(eventEdit);
-            $httpBackend.whenPUT('/api/events/' + $routeParams.eventId, eventUpdated).respond(eventUpdated);
+            $httpBackend.expectGET(baseUrl + '/' + $routeParams.eventId).respond(eventEdit);
+            $httpBackend.whenPUT(baseUrl + '/'+ $routeParams.eventId, eventUpdated).respond(eventUpdated);
 
             // actual function call
             $scope.updateButton(eventUpdated);

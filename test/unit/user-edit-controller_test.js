@@ -1,6 +1,7 @@
 'use strict';
 
 describe('userEditCtrl', function(){
+    var baseUrl = 'http://localhost:3000/api/users';
 
     var mockUsers = [
         {
@@ -90,7 +91,7 @@ describe('userEditCtrl', function(){
     });
 
     it('should show pre-filled form to edit', function(){
-        $httpBackend.expectGET('/api/users/'+ $routeParams.userId).respond(userEdit);
+        $httpBackend.expectGET(baseUrl + '/'+ $routeParams.userId).respond(userEdit);
         $httpBackend.flush();
 
         expect($scope.user).toEqual(userEdit);
@@ -98,8 +99,8 @@ describe('userEditCtrl', function(){
 
     describe('updateUser', function(){
         it("should update by submit of edited form", function(){
-            $httpBackend.expectGET('/api/users/'+ $routeParams.userId).respond(userEdit);
-            $httpBackend.expectPUT('/api/users/'+ $routeParams.userId, userEdited).respond(userEdited);
+            $httpBackend.expectGET(baseUrl + '/'+ $routeParams.userId).respond(userEdit);
+            $httpBackend.expectPUT(baseUrl + '/'+ $routeParams.userId, userEdited).respond(userEdited);
 
             $scope.updateUser(userEdited);
             $httpBackend.flush();

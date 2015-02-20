@@ -1,6 +1,7 @@
 'use strict';
 
 describe('eventShowCtrlModule', function(){
+    var baseUrl = 'http://localhost:3000/api/events';
     var mockEvents = [
         {
             _id: "1",
@@ -93,7 +94,7 @@ describe('eventShowCtrlModule', function(){
 
     it('should find a event object with event id on url', function(){
         // mock data
-        $httpBackend.expectGET('/api/events/' + mockEventId).respond(eventFound);
+        $httpBackend.expectGET(baseUrl + '/' + mockEventId).respond(eventFound);
         $httpBackend.flush();
 
         // actual function call
@@ -104,9 +105,9 @@ describe('eventShowCtrlModule', function(){
 
     it("should be able to delete an event by its delete button", function(){
         // mock data
-        $httpBackend.expectGET('/api/events/' + mockEventId).respond(eventFound);
-        $httpBackend.expectDELETE('/api/events/' + mockEventId).respond(eventsAfterDelete);
-        $httpBackend.expectGET('/api/events').respond(eventsAfterDelete);
+        $httpBackend.expectGET(baseUrl + '/' + mockEventId).respond(eventFound);
+        $httpBackend.expectDELETE(baseUrl + '/' + mockEventId).respond(eventsAfterDelete);
+        $httpBackend.expectGET(baseUrl).respond(eventsAfterDelete);
 
         // actual function call
         $scope.deleteButton(mockEventId);
