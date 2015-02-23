@@ -1,7 +1,7 @@
 angular
 .module('userIndexCtrlModule', [])
-.controller('userIndexCtrl', ['$scope', 'userService',
-function($scope, userService){
+.controller('userIndexCtrl', ['$scope', 'userService', 'cameraService',
+function($scope, userService, cameraService){
 
     userService.loadAll().success(function(data){
         $scope.users = data;
@@ -14,4 +14,5 @@ function($scope, userService){
             });
         });
     };
+
 }]);

@@ -16,6 +16,8 @@ angular
     'userShowCtrlModule',
     
     'DashCtrlModule',
+    'cameraCtrlModule',
+    'cameraServiceModule',
 
     'mainCtrlModule'
 ])
@@ -51,13 +53,22 @@ angular
 
     // Each tab has its own nav history stack:
     .state('tab.dash', {
-          url: '/dash',
-          views: {
-                'tab-dash': {
-                    templateUrl: 'components/tab-dash.html',
-                    controller: 'DashCtrl'
-              }
-          }
+        url: '/dash',
+        views: {
+            'tab-dash': {
+                templateUrl: 'components/tab-dash.html',
+                controller: 'DashCtrl'
+            }
+        }
+    })
+    .state('tab.camera', {
+        url: '/camera',
+        views: {
+            'tab-camera': {
+                templateUrl: 'components/tab-camera.html',
+                controller: 'cameraCtrl'
+            }
+        }
     })
 
     .state('tab.users',{

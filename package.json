@@ -1,4 +1,3 @@
-
 {
   "name": "volunteer-management-app",
   "version": "0.0.1",
@@ -41,5 +40,8 @@
   },
   "scripts": {
     "start": "node ./server/bin/www"
-  }
+  },
+  "cordovaPlugins": [
+    "org.apache.cordova.console"
+  ]
 }
