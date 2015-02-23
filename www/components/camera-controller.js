@@ -21,7 +21,7 @@ angular
             cameraService.getPicture(options).then(function(imageData) {
 
                 console.log(imageData);
-                $scope.lastPhoto = "data:image/jpeg;base64," + imageData;
+                $scope.lastPhotoURI = "data:image/jpeg;base64," + imageData;
 
                 // var image = document.getElementById('myImage');
                 // image.src = "data:image/jpeg;base64," + imageData;
@@ -37,4 +37,3 @@ angular
     }, false);
 
 });
-// document.addEventListener("deviceready", function () {
