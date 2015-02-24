@@ -9,3 +9,5 @@ memo_example_folder/
 
 npm-debug.log
 .DS_Store
+
+platforms/
