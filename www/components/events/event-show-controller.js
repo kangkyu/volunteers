@@ -15,22 +15,37 @@ function($scope, $stateParams, eventService, cameraService){
         });
     };
 
-    $scope.getEventPhoto = function(event){
-        cameraService.getPicture(options).then(function(imageData) {
+    document.addEventListener("deviceready", function () {
 
-            console.log(imageData);
-            event.lastPhotoURI = "data:image/jpeg;base64," + imageData;
+        var options = {
+            quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 100,
+            targetHeight: 100,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false
+        };
+        var photoEvent;
 
-            // var image = document.getElementById('myImage');
-            // image.src = "data:image/jpeg;base64," + imageData;
+        $scope.getEventPhoto = function(photoEvent){
 
-        }, function(err) {
-            console.err(err);
-        });
+            cameraService.getPicture(options).then(function(imageData) {
 
-        eventService.updateEvent(event._id, event).success(function(data){
-            $scope.event = data;
-            console.log($scope.event);
-        });
-    };
+                console.log(imageData);
+                $scope.event.lastPhotoURI = "data:image/jpeg;base64," + imageData;
+
+                eventService.updateEvent(photoEvent._id, photoEvent).success(function(data){
+                    $scope.event = data;
+                    console.log($scope.event);
+                });
+
+            }, function(err) {
+                console.err(err);
+            });
+        };
+
+    }, false);
 }]);

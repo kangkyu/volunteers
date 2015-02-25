@@ -11,8 +11,8 @@
         <div class="form-group padding-top">
             <button data-ng-click="getEventPhoto(event)" class="button button-block button-royal">Take Photo</button>
         </div>
-        <div class="item item-image">
-            <img ng-src="{{lastPhotoURI}}" style="max-width: 100%">
+        <div ng-show="event.lastPhotoURI" class="item item-image">
+            <img ng-src="{{event.lastPhotoURI}}" style="max-width: 100%">
         </div>
 
     </ion-content>
