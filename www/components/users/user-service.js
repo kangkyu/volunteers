@@ -3,8 +3,8 @@ angular
 .factory('userService', ['$http',
 function($http){
     var userService = {};
-    // var baseUrl = 'http://localhost:3000/api/users';
-    var baseUrl = 'http://104.236.237.119:3000/api/users'
+    var baseUrl = 'http://localhost:3000/api/users';
+    // var baseUrl = 'http://104.236.237.119:3000/api/users'
 
     userService.loadAll = function(){
         return $http.get(baseUrl);
