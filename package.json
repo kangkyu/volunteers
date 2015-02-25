@@ -42,6 +42,9 @@
     "start": "node ./server/bin/www"
   },
   "cordovaPlugins": [
-    "org.apache.cordova.console"
+    "org.apache.cordova.console",
+    "org.apache.cordova.device",
+    "com.ionic.keyboard",
+    "org.apache.cordova.camera"
   ]
 }
