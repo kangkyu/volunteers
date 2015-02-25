@@ -15,37 +15,30 @@ function($scope, $stateParams, eventService, cameraService){
         });
     };
 
-    document.addEventListener("deviceready", function () {
+    var options = {
+        quality: 50,
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: Camera.PictureSourceType.CAMERA,
+        allowEdit: true,
+        encodingType: Camera.EncodingType.JPEG,
+        targetWidth: 100,
+        targetHeight: 100,
+        popoverOptions: CameraPopoverOptions,
+        saveToPhotoAlbum: false
+    };
 
-        var options = {
-            quality: 50,
-            destinationType: Camera.DestinationType.DATA_URL,
-            sourceType: Camera.PictureSourceType.CAMERA,
-            allowEdit: true,
-            encodingType: Camera.EncodingType.JPEG,
-            targetWidth: 100,
-            targetHeight: 100,
-            popoverOptions: CameraPopoverOptions,
-            saveToPhotoAlbum: false
-        };
-        var photoEvent;
+    $scope.getEventPhoto = function(photoEvent){
 
-        $scope.getEventPhoto = function(photoEvent){
+        cameraService.getPicture(options).then(function(imageData) {
 
-            cameraService.getPicture(options).then(function(imageData) {
+            $scope.event.lastPhotoURI = "data:image/jpeg;base64," + imageData;
 
-                console.log(imageData);
-                $scope.event.lastPhotoURI = "data:image/jpeg;base64," + imageData;
-
-                eventService.updateEvent(photoEvent._id, photoEvent).success(function(data){
-                    $scope.event = data;
-                    console.log($scope.event);
-                });
-
-            }, function(err) {
-                console.err(err);
+            eventService.updateEvent(photoEvent._id, photoEvent).success(function(data){
+                $scope.event = data;
             });
-        };
 
-    }, false);
+        }, function(err) {
+            console.err(err);
+        });
+    };
 }]);

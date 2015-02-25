@@ -5,6 +5,5 @@ function($scope,$stateParams,userService){
 
     userService.loadById($stateParams.userId).success(function(data){
         $scope.user = data;
-        console.log($stateParams.userId);
     });
 }]);
